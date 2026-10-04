@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>XTRX AiGracy</title>
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="description" content="XTRX AiGracy — Premium AI Assistant Multi-Model" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/png" href="/assets/images.png" />
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <img src="/assets/images.png" alt="XTRX" />
+      </div>
+      <div>
+        <div class="brand-title">XTRX AiGracy</div>
+        <div class="brand-sub">AI Multi-Model</div>
+      </div>
+    </div>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <button class="new-chat-btn" id="newChatBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+    <span>Chat Baru</span>
+  </button>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Riwayat</div>
+    <div class="history-list" id="historyList">
+      <div class="history-empty">Belum ada riwayat chat</div>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-chip">
+      <div class="user-avatar">
+        <img src="/assets/images.png" alt="User" />
+      </div>
+      <div class="user-info">
+        <div class="user-name">XTRX User</div>
+        <div class="user-role">Premium Access</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main">
+
+  <header class="topbar">
+    <button class="icon-btn" id="btnSidebar" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+
+    <button class="model-btn-top" id="btnModelTop">
+      <span class="model-badge" id="modelBadgeTop">✦</span>
+      <span class="model-name-top" id="modelNameTop">Loading...</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </button>
+
+    <div class="topbar-right">
+      <button class="icon-btn" id="btnSystem" title="Instruksi sistem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+      <button class="icon-btn" id="btnClear" title="Hapus chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="chat-area" id="chatArea">
+    <div class="hero" id="hero">
+      <div class="hero-mark">
+        <img src="/assets/images.png" alt="XTRX AiGracy" />
+      </div>
+      <h1 class="hero-title">Apa yang bisa saya bantu?</h1>
+      <p class="hero-sub">Tanya apa saja, upload foto atau video untuk dianalisa</p>
+
+      <div class="suggest-grid">
+        <button class="suggest-card" data-prompt="Jelaskan kode Dart ini">
+          <div class="suggest-icon">💡</div>
+          <div class="suggest-title">Jelaskan Kode</div>
+          <div class="suggest-desc">Analisa kode program kamu</div>
+        </button>
+        <button class="suggest-card" data-prompt="Buat REST API sederhana dengan Dart">
+          <div class="suggest-icon">⚡</div>
+          <div class="suggest-title">Buat Kode</div>
+          <div class="suggest-desc">Generate REST API dengan Dart</div>
+        </button>
+        <button class="suggest-card" data-prompt="Analisa gambar ini" data-sample-image="/assets/images.png">
+          <div class="suggest-icon">
+            <img src="/assets/images.png" alt="" style="width:20px;height:20px;object-fit:contain;border-radius:4px;" />
+          </div>
+          <div class="suggest-title">Analisa Foto</div>
+          <div class="suggest-desc">Kirim assets/images.png ke AI</div>
+        </button>
+        <button class="suggest-card" data-prompt="Fix bug di kode saya">
+          <div class="suggest-icon">🔧</div>
+          <div class="suggest-title">Fix Bug</div>
+          <div class="suggest-desc">Debug & perbaiki error</div>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div class="pending-files" id="pendingFiles"></div>
+
+  <div class="composer-wrap">
+    <div class="composer">
+      <button class="composer-model" id="btnModelComposer" title="Ganti AI">
+        <span class="composer-model-badge" id="composerBadge">✦</span>
+        <span class="composer-model-name" id="composerName">Loading</span>
+        <svg class="chev-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+
+      <input type="file" id="fileInput" multiple
+        accept="image/*,video/*,audio/*,.txt,.js,.dart,.py,.json,.md,.html,.css,.yaml,.yml,.xml,.pdf"
+        style="display:none" />
+
+      <button class="composer-attach" id="btnAttach" title="Upload file">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+        </svg>
+      </button>
+
+      <textarea id="messageInput" placeholder="Tanya XTRX AiGracy..." rows="1"></textarea>
+
+      <button class="composer-send" id="btnSend" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </button>
+    </div>
+    <div class="composer-hint">
+      XTRX AiGracy dapat membuat kesalahan. Periksa informasi penting.
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ MODEL PICKER SHEET ═══ -->
+<div class="sheet" id="sheetModel">
+  <div class="sheet-backdrop" data-close="sheetModel"></div>
+  <div class="sheet-content">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <h3>Pilih Model AI</h3>
+      <button class="sheet-close" data-close="sheetModel">✕</button>
+    </div>
+
+    <div class="sheet-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="modelSearch" placeholder="Cari model..." />
+    </div>
+
+    <div class="sheet-filters" id="modelFilters">
+      <button class="filter-pill active" data-filter="all">Semua</button>
+      <button class="filter-pill" data-filter="opus">👑 Opus</button>
+      <button class="filter-pill" data-filter="claude">🎭 Claude</button>
+      <button class="filter-pill" data-filter="gemini">💎 Gemini</button>
+      <button class="filter-pill" data-filter="vision">👁 Vision</button>
+      <button class="filter-pill" data-filter="tools">🔧 Tools</button>
+      <button class="filter-pill" data-filter="reasoning">🧠 Think</button>
+    </div>
+
+    <div class="model-list" id="modelList"></div>
+  </div>
+</div>
+
+<!-- ═══ SYSTEM PROMPT SHEET ═══ -->
+<div class="sheet" id="sheetSystem">
+  <div class="sheet-backdrop" data-close="sheetSystem"></div>
+  <div class="sheet-content narrow">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <h3>Instruksi Sistem</h3>
+      <button class="sheet-close" data-close="sheetSystem">✕</button>
+    </div>
+    <textarea id="systemPrompt" rows="6" class="system-textarea">You are XTRX AiGracy, a helpful AI assistant. Answer clearly, use code blocks when needed.</textarea>
+    <button class="primary-btn" id="btnSaveSystem">Simpan</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
