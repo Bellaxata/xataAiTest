@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "api/*.js": {
+      "memory": 3008,
+      "maxDuration": 300
+    }
+  }
+}
